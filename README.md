@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/3WjIbrgM)
 # 🤖 Multi-Agent Systems Lab: AutoGen vs. CrewAI
 
 ## Basics and Fundamentals (!!Read this first!!)
@@ -121,7 +122,16 @@ python crewai/crewai_demo.py
 
 ---
 
-## 📁 Project Structure
+# Multi-Agent Systems Lab - Complete Guide
+
+Welcome to the Multi-Agent Systems Lab! This project demonstrates the use of multi-agent frameworks for solving complex tasks, including travel planning and interview workflows. The lab is divided into two main frameworks:
+
+1. **AutoGen**: A framework for building conversational agents.
+2. **CrewAI**: A framework for orchestrating specialized agents to solve real-world problems.
+
+---
+
+## Project Structure
 
 ```
 multi-agent/
@@ -142,186 +152,82 @@ multi-agent/
 
 ---
 
-## 🚀 Getting Started (5 Minutes)
+## Setup Instructions
 
-### Step 1: Setup Environment
-```bash
-# Create .env file with your API key
-cp .env.example .env
-nano .env  # Add your OPENAI_API_KEY
-```
+### 1. Install Dependencies
 
-### Step 2: Install Packages
+Ensure you have Python 3.10+ installed. Then, install the required dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### Step 3: Test Configuration
+### 2. Configure Environment Variables
+
+Copy the example `.env` file and add your OpenAI API key:
+
 ```bash
-python shared_config.py
-# Should show: ✅ Configuration validation passed!
-```
-
-### Step 4: Run First Demo
-```bash
-# Try AutoGen
-python autogen/autogen_simple_demo.py
-
-# OR try CrewAI
-python crewai/crewai_demo.py
-```
-
----
-
-## 🔍 Understanding Multi-Agent Systems
-
-### Key Concepts
-
-**Agent:** An AI entity with a specific role, goal, and reasoning ability
-```python
-Agent(
-    role="Flight Specialist",
-    goal="Find the best flights for the trip",
-    backstory="You have booked thousands of flights..."
-)
-```
-
-**Task:** Work to be completed by an agent
-```python
-Task(
-    description="Research flights from NYC to Reykjavik",
-    agent=flight_agent,
-    expected_output="List of flight options with prices"
-)
-```
-
-**Workflow:** How agents interact and pass information
-- **Conversational** (AutoGen): Agents chat, debate, iterate
-- **Sequential** (CrewAI): Each agent completes task, passes output to next
-- **Parallel:** Multiple agents work simultaneously (advanced)
-
-### Why Use Multiple Agents?
-- **Specialization:** Each agent is expert in one area
-- **Modularity:** Easy to add/remove agents
-- **Scalability:** Handle complex problems by breaking them down
-- **Transparency:** Understand reasoning at each step
-
----
-
-## 📊 Comparison: AutoGen vs. CrewAI
-
-| Aspect | AutoGen | CrewAI |
-|--------|---------|--------|
-| **Communication** | Conversational | Task-based |
-| **Workflow** | Flexible, agent-decided | Structured, sequential |
-| **Setup** | More code, more control | Less code, simpler |
-| **Best For** | Iterative problem-solving | Clear workflows |
-| **Agent Autonomy** | High (agents decide next steps) | Lower (follows task structure) |
-| **Output Structure** | Unstructured conversation | Structured task outputs |
-| **Learning Curve** | Steeper | Gentler |
-
-### Choose AutoGen If:
-- ✓ Problem requires iteration and refinement
-- ✓ Agents need to debate/discuss solutions
-- ✓ Output structure is uncertain upfront
-- ✓ You need fine-grained control
-
-### Choose CrewAI If:
-- ✓ Workflow is well-defined and sequential
-- ✓ Each agent has clear inputs/outputs
-- ✓ You want faster setup with less code
-- ✓ Tasks are independent and composable
-
----
-
-## 🎓 Lab Exercises
-
-### Exercise 1: Run and Understand
-1. Run `autogen/autogen_simple_demo.py`
-2. Read the output - understand how agents interact
-3. Run `crewai/crewai_demo.py`
-4. Compare the communication styles
-
-### Exercise 2: Modify Agent Roles
-**AutoGen:** Edit agent backstories in `autogen/config.py`
-```python
-RESEARCH_AGENT = {
-    "role": "Market Researcher",  # ← Modify this
-    "temperature": 0.7,
-}
-```
-
-**CrewAI:** Edit agent definitions in `crewai/crewai_demo.py`
-```python
-Agent(
-    role="Flight Specialist",  # ← Modify this
-    goal="...",
-    backstory="..."  # ← Add more detail here
-)
-```
-
-### Exercise 3: Add a New Task
-**For AutoGen:** Add a new agent to the workflow
-**For CrewAI:** Add a new task to the crew
-
-### Exercise 4: Custom Problem
-Try these scenarios with either framework:
-- Plan a 3-day conference agenda
-- Design a marketing strategy for a product
-- Create a research paper outline
-- Plan a software architecture
-
----
-
-## 🔧 Troubleshooting
-
-### "OPENAI_API_KEY is not configured"
-```bash
-# Make sure .env file exists and has your key
-cat .env
-
-# If missing, create it:
 cp .env.example .env
-# Then edit and add your key
-nano .env
 ```
 
-### "ModuleNotFoundError: No module named 'shared_config'"
-```bash
-# Run from project root, not from subdirectories
-cd /Users/pranavhharish/Desktop/IS-492/multi-agent
-python crewai/crewai_demo.py
+Edit the `.env` file and add your OpenAI API key:
+
 ```
-
-### "Invalid API key" Error
-```bash
-# Check your key is valid at:
-# https://platform.openai.com/account/api-keys
-
-# Make sure it's in .env without quotes:
-OPENAI_API_KEY=sk-proj-xxxxx  # ✓ Correct
-# OPENAI_API_KEY="sk-proj-xxxxx"  # ✗ Wrong (don't use quotes)
+OPENAI_API_KEY=sk-...
 ```
-
-### "Rate limit exceeded"
-- Wait a few minutes and try again
-- Check your API usage: https://platform.openai.com/account/usage
 
 ---
 
-## 📚 Additional Resources
+## Running the Demos
 
-### Documentation
-- **[AutoGen Docs](https://microsoft.github.io/autogen/)** - Official AutoGen documentation
-- **[CrewAI Docs](https://docs.crewai.com/)** - Official CrewAI documentation
-- **[OpenAI API](https://platform.openai.com/docs/)** - API reference and guides
+### 1. AutoGen Framework
 
-### Learning
-- **[LLM Agent Systems](https://lilianweng.github.io/posts/2023-06-23-agent/)** - Deep dive into agent theory
-- **[ReAct Prompting](https://arxiv.org/abs/2210.03629)** - How agents think and act
-- **[Multi-Agent Collaboration](https://arxiv.org/abs/2306.03589)** - Research on agent cooperation
+#### Simple Demo
+Run the simple AutoGen demo to see a basic implementation:
 
-### Community
-- **AutoGen:** GitHub discussions at microsoft/autogen
-- **CrewAI:** GitHub issues at joaomdmoura/crewai
+```bash
+python autogen/autogen_simple_demo.py
+```
+
+#### Full Implementation
+Run the full AutoGen interview platform workflow:
+
+```bash
+python autogen/autogen_interview_platform.py
+```
+
+### 2. CrewAI Framework
+
+Run the CrewAI travel planning demo to see agents collaborate on planning a trip:
+
+```bash
+python crewai/crewai_demo.py
+```
+
+---
+
+## Key Files
+
+### Configuration
+- **`shared_config.py`**: Centralized configuration for both frameworks.
+- **`.env`**: Environment variables (e.g., API keys).
+
+### AutoGen
+- **`autogen_simple_demo.py`**: A simple demo showcasing AutoGen capabilities.
+- **`autogen_interview_platform.py`**: Full implementation of the interview platform.
+
+### CrewAI
+- **`crewai_demo.py`**: Travel planning demo using CrewAI.
+
+---
+
+## Notes
+
+- Ensure your OpenAI API key has access to the required models (e.g., `gpt-4`).
+- For any issues, check the OpenAI API status at [https://status.openai.com](https://status.openai.com).
+- Do not commit your `.env` file to version control.
+
+---
+
+Happy experimenting with multi-agent systems!
 
